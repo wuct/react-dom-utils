@@ -1,0 +1,8 @@
+src
+example
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc
+.npmignore
+.stylelintrc
