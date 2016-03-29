@@ -15,10 +15,10 @@
 
 ## Example
 
-```
+```js
 import React from 'react'
 import throttle from 'raf-throttle'
-import withMousePosition from '../src/withMousePosition.js'
+import withMousePosition from 'react-dom-utils/lib/withMousePosition.js'
 
 const style = {
   width: 400,
