@@ -13,6 +13,24 @@
 
 `npm install react-dom-utils --save`
 
+## API
+
+### withMousePosition([throttleFunc])
+#### props
+  - mousePosition
+
+### withDOMSize([throttleFunc])
+#### props
+  - DOMSize
+ 
+### withWindowSize([throttleFunc])
+#### props
+  - windowSize
+ 
+#### throttleFunc
+The function is used for throttling events. It is recommended to use [raf-throttle](https://github.com/wuct/raf-throttle).
+Default to [lodash/identity](https://lodash.com/docs#identity).
+
 ## Example
 
 ```js
@@ -20,20 +38,12 @@ import React from 'react'
 import throttle from 'raf-throttle'
 import withMousePosition from 'react-dom-utils/lib/withMousePosition.js'
 
-const style = {
-  width: 400,
-  height: 400,
-  backgroundColor: "#ECBDBB",
-}
-
-const component = ({ mousePosition }) => (
-  <div style={style}>
-    {JSON.stringify(mousePosition)}
-  </div>
+export default withMousePosition(throttle)(
+  ({ mousePosition }) => <div>{JSON.stringify(mousePosition)}</div>
 )
-
-export default withMousePosition(throttle)(component)
 ```
+
+More examples is [here](https://github.com/wuct/react-dom-utils/tree/master/example)
 
 ## Contributing
 
