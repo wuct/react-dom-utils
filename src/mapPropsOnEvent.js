@@ -21,7 +21,7 @@ const mapPropsOnEvent =
         this.target.removeEventListener(type, this.mapProps)
 
       mapProps = throttle(
-        e => this.setState(propsMapper(e, this.props))
+        e => this.setState(propsMapper(e, this))
       )
 
       render = () =>
