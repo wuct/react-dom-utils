@@ -16,7 +16,7 @@ const pickedProps = [
   'scrollHeight',
 ]
 
-const withDOMSize = (throttle = identity) =>
+const withSize = (throttle = identity) =>
   BaseComponent =>
     class extends React.Component {
       state = {}
@@ -47,4 +47,4 @@ const withDOMSize = (throttle = identity) =>
         })
     }
 
-export default createHelper(withDOMSize, 'withDOMSize')
+export default createHelper(withSize, 'withSize')

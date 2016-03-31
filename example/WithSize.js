@@ -1,6 +1,6 @@
 import React from 'react'
 import throttle from 'raf-throttle'
-import withDOMSize from '../src/withDOMSize.js'
+import withSize from '../src/withSize.js'
 
 const style = {
   width: '100%',
@@ -15,4 +15,4 @@ const component = ({ DOMSize }) =>
     </span>
   </div>
 
-export default withDOMSize(throttle)(component)
+export default withSize(throttle)(component)
