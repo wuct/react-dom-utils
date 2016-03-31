@@ -1,9 +1,7 @@
-import React from 'react'
-import { findDOMNode } from 'react-dom'
-import createElement from 'recompose/createElement'
 import createHelper from 'recompose/createHelper'
 import pick from 'lodash/pick'
 import identity from 'lodash/identity'
+import mapPropsOnEvent from './mapPropsOnEvent'
 
 const pickedProps = [
   'innerWidth',
@@ -13,27 +11,12 @@ const pickedProps = [
 ]
 
 const withWindowSize = (throttle = identity) =>
-  BaseComponent =>
-    class extends React.Component {
-      state = {}
-
-      componentDidMount = () => {
-        window.addEventListener('resize', this.onResize)
-        this.onResize()
-      }
-
-      componentWillUnmount = () =>
-        window.removeEventListener('resize', this.onResize)
-
-      onResize = throttle(
-        () => this.setState(pick(window, pickedProps))
-      )
-
-      render = () =>
-        createElement(BaseComponent, {
-          ...this.props,
-          windowSize: this.state,
-        })
-    }
+  mapPropsOnEvent(
+    () => window,
+    'resize',
+    () => ({ windowSize: pick(window, pickedProps) }),
+    throttle,
+    true
+  )
 
 export default createHelper(withWindowSize, 'withWindowSize')
