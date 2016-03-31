@@ -15,17 +15,23 @@
 
 ## API
 
+### mapPropsOnEvent(getTarget, type, propsMapper, throttle, [mapOnMount])
+
 ### withMousePosition([throttleFunc])
 #### props
   - mousePosition
 
-### withDOMSize([throttleFunc])
+### withSize([throttleFunc])
 #### props
   - DOMSize
  
 ### withWindowSize([throttleFunc])
 #### props
   - windowSize
+
+### withOffsetToRoot([throttleFunc])
+#### props
+  - offsetToRoot
  
 #### throttleFunc
 The function is used for throttling events. It is recommended to use [raf-throttle](https://github.com/wuct/raf-throttle).
