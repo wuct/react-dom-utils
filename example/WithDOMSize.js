@@ -5,7 +5,7 @@ import withDOMSize from '../src/withDOMSize.js'
 const style = {
   width: '100%',
   height: 100,
-  backgroundColor: "#7E94C7",
+  backgroundColor: '#7E94C7',
 }
 
 const component = ({ DOMSize }) =>

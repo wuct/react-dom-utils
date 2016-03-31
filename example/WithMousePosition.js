@@ -5,7 +5,7 @@ import withMousePosition from '../src/withMousePosition.js'
 const style = {
   width: 400,
   height: 400,
-  backgroundColor: "#ECBDBB",
+  backgroundColor: '#ECBDBB',
 }
 
 const component = ({ mousePosition }) => (

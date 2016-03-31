@@ -20,7 +20,7 @@ export default {
         test: /\.js$/,
         exclude: /node_modules/,
         loaders: ['babel'],
-      }
+      },
     ],
   },
 
@@ -35,7 +35,7 @@ export default {
 
   resolve: {
     alias: {
-      'react': path.resolve(__dirname, '../../node_modules/react'),
+      react: path.resolve(__dirname, '../../node_modules/react'),
       'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
     },
   },

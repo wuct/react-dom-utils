@@ -5,7 +5,7 @@ import withWindowSize from '../src/withWindowSize.js'
 const style = {
   width: '100%',
   height: 100,
-  backgroundColor: "#6D695B",
+  backgroundColor: '#6D695B',
 }
 
 const component = ({ windowSize }) =>
