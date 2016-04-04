@@ -1,6 +1,6 @@
 {
   "name": "react-dom-utils",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "DOM operation utilities for React",
   "main": "lib/index.js",
   "scripts": {
