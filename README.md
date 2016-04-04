@@ -34,7 +34,7 @@ mapPropsOnEvent(
 
 Attaches the props returned by `propsMapper` to owner props and updates it when the specified event is triggered.
 
-### withMousePosition()
+### `withMousePosition()`
 
 ```js
 withMousePosition(
@@ -57,7 +57,7 @@ Attaches `mousePosition` to owner props and updates it when a `mouseover` event 
 }
 ```
 
-### withSize()
+### `withSize()`
 
 
 ```js
@@ -81,7 +81,7 @@ Attaches `DOMSize` to owner props and updates it when a `resize` event (detected
 }
 ```
  
-### withWindowSize()
+### `withWindowSize()`
 
 ```js
 withWindowSize(
@@ -102,7 +102,7 @@ Attaches `windowSize` to owner props and updates it when a `resize` event of `wi
 }
 ```
 
-### withOffsetToRoot()
+### `withOffsetToRoot()`
 
 
 ```js
