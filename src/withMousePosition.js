@@ -1,8 +1,9 @@
+import React from 'react'
 import { findDOMNode } from 'react-dom'
 import createHelper from 'recompose/createHelper'
+import createElement from 'recompose/createElement'
 import pick from 'lodash/pick'
 import identity from 'lodash/identity'
-import mapPropsOnEvent from './mapPropsOnEvent'
 
 const pickedProps = [
   'pageX',
@@ -14,12 +15,32 @@ const pickedProps = [
 ]
 
 const withMousePosition = (throttle = identity) =>
-  mapPropsOnEvent(
-    self => findDOMNode(self),
-    'mousemove',
-    e => ({ mousePosition: pick(e, pickedProps) }),
-    throttle,
-    false
-  )
+BaseComponent =>
+  class extends React.Component {
+    state = {}
+
+    componentDidMount = () => {
+      this.dom = findDOMNode(this)
+      this.dom.addEventListener('mousemove', this.onMouseMove)
+      this.dom.addEventListener('mouseleave', this.onMouseLeave)
+    }
+
+    componentWillUnmount = () => {
+      this.dom.removeEventListener('mousemove', this.onMouseMove)
+      this.dom.removeEventListener('mouseleave', this.onMouseLeave)
+    }
+
+    onMouseMove = e =>
+      throttle(this.setState({ mousePosition: pick(e, pickedProps) }))
+
+    onMouseLeave = () =>
+      this.setState({ mousePosition: {}})
+
+    render = () =>
+      createElement(BaseComponent, {
+        ...this.props,
+        ...this.state,
+      })
+  }
 
 export default createHelper(withMousePosition, 'withMousePosition')
