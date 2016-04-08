@@ -106,7 +106,7 @@ Attaches `windowSize` to owner props and updates it when a `resize` event of `wi
 
 
 ```js
-withWindowSize(
+withOffsetToRoot(
   throttle: Function
 ): ReactElementType
 ```
