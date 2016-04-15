@@ -55,7 +55,7 @@
     "recompose": "^0.15.1"
   },
   "devDependencies": {
-    "ava": "^0.13.0",
+    "ava": "^0.14.0",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.0",
@@ -71,6 +71,8 @@
     "jsdom": "^8.2.0",
     "nyc": "^6.1.1",
     "react-addons-test-utils": "^0.14.7",
+    "simulant": "^0.2.0",
+    "sinon": "^1.17.3",
     "webpack": "^1.12.14"
   }
 }
