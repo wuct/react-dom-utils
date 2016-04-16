@@ -37,8 +37,9 @@ BaseComponent =>
       this.dom.removeEventListener('mouseleave', this.onMouseLeave)
     }
 
-    onMouseMove = e =>
-      throttle(this.setState({ mousePosition: pick(e, pickedProps) }))
+    onMouseMove = throttle(
+      e => this.setState({ mousePosition: pick(e, pickedProps) })
+    )
 
     onMouseLeave = () =>
       this.setState(defaultState)
