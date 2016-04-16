@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint ./",
-    "test": "ava",
+    "test": "ava --timeout 10000",
     "test:coverage": "nyc npm run test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "NODE_ENV=production babel src --out-dir lib",
@@ -55,7 +55,7 @@
     "recompose": "^0.15.1"
   },
   "devDependencies": {
-    "ava": "^0.13.0",
+    "ava": "^0.14.0",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.0",
@@ -68,9 +68,12 @@
     "eslint": "^2.5.3",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-react": "^4.2.3",
+    "expect": "^1.16.0",
     "jsdom": "^8.2.0",
     "nyc": "^6.1.1",
     "react-addons-test-utils": "^0.14.7",
+    "simulant": "^0.2.0",
+    "sinon": "^1.17.3",
     "webpack": "^1.12.14"
   }
 }

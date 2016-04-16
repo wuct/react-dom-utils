@@ -4,6 +4,7 @@ import createHelper from 'recompose/createHelper'
 import createElement from 'recompose/createElement'
 import pick from 'lodash/pick'
 import identity from 'lodash/identity'
+import isFunction from 'lodash/isFunction'
 
 const pickedProps = [
   'pageX',
@@ -14,10 +15,12 @@ const pickedProps = [
   'screenY',
 ]
 
+export const defaultState = { mousePosition: undefined }
+
 const withMousePosition = (throttle = identity) =>
 BaseComponent =>
   class extends React.Component {
-    state = {}
+    state = defaultState
 
     componentDidMount = () => {
       this.dom = findDOMNode(this)
@@ -26,15 +29,20 @@ BaseComponent =>
     }
 
     componentWillUnmount = () => {
+      if (isFunction(this.onMouseMove.cancel)) {
+        this.onMouseMove.cancel()
+      }
+
       this.dom.removeEventListener('mousemove', this.onMouseMove)
       this.dom.removeEventListener('mouseleave', this.onMouseLeave)
     }
 
-    onMouseMove = e =>
-      throttle(this.setState({ mousePosition: pick(e, pickedProps) }))
+    onMouseMove = throttle(
+      e => this.setState({ mousePosition: pick(e, pickedProps) })
+    )
 
     onMouseLeave = () =>
-      this.setState({ mousePosition: {}})
+      this.setState(defaultState)
 
     render = () =>
       createElement(BaseComponent, {
