@@ -4,6 +4,7 @@ import createHelper from 'recompose/createHelper'
 import createElement from 'recompose/createElement'
 import pick from 'lodash/pick'
 import identity from 'lodash/identity'
+import isFunction from 'lodash/isFunction'
 
 const pickedProps = [
   'pageX',
@@ -26,6 +27,10 @@ BaseComponent =>
     }
 
     componentWillUnmount = () => {
+      if (isFunction(this.onMouseMove.cancel)) {
+        this.onMouseMove.cancel()
+      }
+
       this.dom.removeEventListener('mousemove', this.onMouseMove)
       this.dom.removeEventListener('mouseleave', this.onMouseLeave)
     }
