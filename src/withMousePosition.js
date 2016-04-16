@@ -15,10 +15,12 @@ const pickedProps = [
   'screenY',
 ]
 
+export const defaultState = { mousePosition: undefined }
+
 const withMousePosition = (throttle = identity) =>
 BaseComponent =>
   class extends React.Component {
-    state = {}
+    state = defaultState
 
     componentDidMount = () => {
       this.dom = findDOMNode(this)
@@ -39,7 +41,7 @@ BaseComponent =>
       throttle(this.setState({ mousePosition: pick(e, pickedProps) }))
 
     onMouseLeave = () =>
-      this.setState({ mousePosition: {}})
+      this.setState(defaultState)
 
     render = () =>
       createElement(BaseComponent, {
