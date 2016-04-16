@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint ./",
-    "test": "ava",
+    "test": "ava --timeout 10000",
     "test:coverage": "nyc npm run test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "NODE_ENV=production babel src --out-dir lib",
@@ -68,6 +68,7 @@
     "eslint": "^2.5.3",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-react": "^4.2.3",
+    "expect": "^1.16.0",
     "jsdom": "^8.2.0",
     "nyc": "^6.1.1",
     "react-addons-test-utils": "^0.14.7",
