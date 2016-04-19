@@ -1,7 +1,6 @@
 import React from 'react'
 import { findDOMNode } from 'react-dom'
 import test from 'ava'
-import { spy } from 'sinon'
 import { mount } from 'enzyme'
 import expect from 'expect'
 import simulant from 'simulant'
@@ -34,7 +33,7 @@ test('reset mousePosition to default when mouseleave', () => {
 
 
 test('invoke the provided throttle function only once', () => {
-  const throttleSpy = spy(identity)
+  const throttleSpy = expect.createSpy().andCall(identity)
   const Container = withMousePosition(throttleSpy)('div')
   const wrapper = mount(<Container />)
   const dom = findDOMNode(wrapper.instance())
@@ -43,13 +42,13 @@ test('invoke the provided throttle function only once', () => {
   simulant.fire(dom, 'mouseleave')
   wrapper.unmount()
 
-  expect(throttleSpy.callCount)
+  expect(throttleSpy.calls.length)
   .toEqual(1)
 })
 
 
 test('invoke the cancel function when unmount', () => {
-  const cancelSpy = spy()
+  const cancelSpy = expect.createSpy()
 
   /* eslint no-param-reassign:["error", { "props": false }] */
   const fakeThrottle = func => {
@@ -62,6 +61,6 @@ test('invoke the cancel function when unmount', () => {
 
   wrapper.unmount()
 
-  expect(cancelSpy.callCount)
-  .toEqual(1)
+  expect(cancelSpy)
+  .toHaveBeenCalled()
 })
