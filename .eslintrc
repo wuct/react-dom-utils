@@ -22,6 +22,7 @@
     }],
     "react/prop-types": 0,
     "react/jsx-curly-spacing": [2, "never", {"allowMultiline": true}],
-    "react/no-multi-comp": [2, { "ignoreStateless": true }]
+    "react/no-multi-comp": [2, { "ignoreStateless": true }],
+    "react/prefer-stateless-function": 0
   }
 }
