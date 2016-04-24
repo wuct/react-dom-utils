@@ -47,7 +47,7 @@ test('invoke the provided throttle function only once', () => {
 })
 
 
-test('invoke the cancel function when unmount', () => {
+test('invoke the cancel function of the provided throttle when unmount', () => {
   const cancelSpy = expect.createSpy()
 
   /* eslint no-param-reassign:["error", { "props": false }] */
