@@ -23,7 +23,8 @@ const mapPropsOnEvent =
           this.mapProps.cancel()
         }
 
-        this.target.removeEventListener(type, this.mapProps)
+        // Remind: to fix issue #11 error handle problem
+        this.target && this.target.removeEventListener(type, this.mapProps)
       }
 
       mapProps = throttle(
