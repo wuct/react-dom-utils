@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint ./",
-    "test": "ava --timeout 10000",
+    "test": "ava",
     "test:coverage": "nyc npm run test",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "build": "NODE_ENV=production babel src --out-dir lib",
