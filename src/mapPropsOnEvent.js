@@ -1,6 +1,7 @@
 import React from 'react'
 import createElement from 'recompose/createElement'
 import createHelper from 'recompose/createHelper'
+import isFunction from 'lodash/isFunction'
 
 const mapPropsOnEvent =
   (getTarget, type, propsMapper, throttle, mapOnMount = false) =>
@@ -17,8 +18,13 @@ const mapPropsOnEvent =
         }
       }
 
-      componentWillUnmount = () =>
+      componentWillUnmount = () => {
+        if (isFunction(this.mapProps.cancel)) {
+          this.mapProps.cancel()
+        }
+
         this.target.removeEventListener(type, this.mapProps)
+      }
 
       mapProps = throttle(
         e => this.setState(propsMapper(e, this))
