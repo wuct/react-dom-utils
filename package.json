@@ -44,7 +44,7 @@
     "babel": "inherit",
     "require": [
       "babel-register",
-      "./test/setup-browser-env.js"
+      "./setupTest.js"
     ]
   },
   "dependencies": {
