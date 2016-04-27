@@ -122,6 +122,31 @@ Attaches `offsetToRoot` to owner props and updates it when a `resize` event of `
 }
 ```
  
+## `mapPropsOnScroll()`
+
+```js
+type Scroll = {
+  x: number,
+  y: number,
+};
+
+mapPropsOnScroll(
+  propsMapper: (scroll: Scroll, previousScroll: Scroll) => Object,
+  throttle: Function,
+  BaseComponent: ReactElementType
+): ReactElementType
+```
+
+Attaches the props returned by propsMapper to owner props and updates it when a `scroll` event of the `window` is triggered.
+
+Example:
+
+```js
+mapPropsOnScroll((scroll, previousScroll) => ({
+  isScrollUp: previousScroll.y > scroll.y,
+})),
+```
+
 ## Usage
 ### `throttle`
 Throttling functions are used for throttling events. All throttle functions are default to [lodash/identity](https://lodash.com/docs#identity). In other words, there is no throttling by default. It is recommended to use [raf-throttle](https://github.com/wuct/raf-throttle) instead.
