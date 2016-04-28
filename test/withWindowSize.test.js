@@ -15,7 +15,7 @@ test('append withWindowSize after mounting', () => {
 })
 
 
-test('update offsetToRoot when the window is resized', () => {
+test('update windowSize when the window is resized', () => {
   const cwrpSpy = expect.createSpy()
 
   class Foo extends React.Component {
