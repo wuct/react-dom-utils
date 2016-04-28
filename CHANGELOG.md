@@ -1,5 +1,7 @@
 ## [HEAD]
 
+- feat(withSize): cancel throttle on unmounting
+- feat(withSize): append `size` after mounting
 - feat(mapPropsOnScroll): support for mapPropsOnScroll
 - feat(mapPropsOnEvent): support for throttle canceling
 - fix(withNousePosition): handle throttling correctly
