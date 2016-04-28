@@ -3,7 +3,7 @@ import pick from 'lodash/pick'
 import identity from 'lodash/identity'
 import mapPropsOnEvent from './mapPropsOnEvent'
 
-const pickedProps = [
+export const pickedProps = [
   'innerWidth',
   'innerHeight',
   'outerWidth',
