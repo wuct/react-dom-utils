@@ -1,5 +1,6 @@
 ## [HEAD]
 
+- feat(mapPropsOnScroll): support for mapPropsOnScroll
 - feat(mapPropsOnEvent): support for throttle canceling
 - fix(withNousePosition): handle throttling correctly
 - feat(withNousePosition): reset to default state when mouse leaving
