@@ -1,5 +1,10 @@
 ## [HEAD]
 
+[HEAD]: https://github.com/wuct/react-dom-utils/compare/latest...HEAD
+
+## [v1.4.0]
+> April 29, 2016
+
 - feat(withSize): cancel throttle on unmounting
 - feat(withSize): append `size` after mounting
 - feat(mapPropsOnScroll): support for mapPropsOnScroll
@@ -8,4 +13,4 @@
 - feat(withNousePosition): reset to default state when mouse leaving
 - feat(withNousePosition): support for throttle canceling
 
-[HEAD]: https://github.com/wuct/react-dom-utils/compare/latest...HEAD
+[v1.4.0]: https://github.com/wuct/raf-throttle/compare/v1.4.0...v1.3.0
