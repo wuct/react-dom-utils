@@ -5,6 +5,7 @@ import createElement from 'recompose/createElement'
 import createHelper from 'recompose/createHelper'
 import pick from 'lodash/pick'
 import identity from 'lodash/identity'
+import isFunction from 'lodash/isFunction'
 
 const erd = erdFactory()
 const pickedProps = [
@@ -37,6 +38,9 @@ const withSize = (throttle = identity) =>
       }
 
       componentWillUnmount = () => {
+        if (isFunction(this.onResize.cancel)) {
+          this.onResize.cancel()
+        }
 
         erd.removeListener(findDOMNode(this), this.onResize)
       }
