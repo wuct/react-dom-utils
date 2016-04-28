@@ -27,8 +27,7 @@ test('reset mousePosition to default when mouseleave', () => {
   simulant.fire(dom, 'mousemove')
   simulant.fire(dom, 'mouseleave')
 
-  expect(wrapper.find('div').props())
-  .toEqual(defaultState)
+  expect(wrapper.find('div').props()).toEqual(defaultState)
 })
 
 
@@ -42,8 +41,7 @@ test('invoke the provided throttle function only once', () => {
   simulant.fire(dom, 'mouseleave')
   wrapper.unmount()
 
-  expect(throttleSpy.calls.length)
-  .toEqual(1)
+  expect(throttleSpy.calls.length).toEqual(1)
 })
 
 
@@ -61,6 +59,5 @@ test('invoke the cancel function of the provided throttle when unmount', () => {
 
   wrapper.unmount()
 
-  expect(cancelSpy)
-  .toHaveBeenCalled()
+  expect(cancelSpy).toHaveBeenCalled()
 })
