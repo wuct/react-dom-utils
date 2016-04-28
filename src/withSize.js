@@ -30,20 +30,26 @@ const withSize = (throttle = identity) =>
        * ex: () => <div><span>foo</span></div>.
        */
 
-      componentDidMount = () =>
+      componentDidMount = () => {
         erd.listenTo(findDOMNode(this), this.onResize)
 
-      componentWillUnmount = () =>
-        erd.removeListener(findDOMNode(this), this.onResize)
+        this.setSizeToState()
+      }
 
-      onResize = throttle(
-        () => this.setState(pick(findDOMNode(this), pickedProps))
-      )
+      componentWillUnmount = () => {
+
+        erd.removeListener(findDOMNode(this), this.onResize)
+      }
+
+      setSizeToState = () =>
+        this.setState({ DOMSize: pick(findDOMNode(this), pickedProps) })
+
+      onResize = throttle(this.setSizeToState)
 
       render = () =>
         createElement(BaseComponent, {
           ...this.props,
-          DOMSize: this.state,
+          ...this.state,
         })
     }
 
