@@ -2,7 +2,7 @@ import React from 'react'
 import createElement from 'recompose/createElement'
 import createHelper from 'recompose/createHelper'
 import isFunction from 'lodash/isFunction'
-import lodashThrottle from 'lodash/throttle';
+import lodashThrottle from 'lodash/throttle'
 
 const getScroll = () => ({
   x: window.pageXOffset,
@@ -32,7 +32,7 @@ const mapPropsOnScroll =
         () => {
           // Remind: fix for safari over scrolling problem
           const maxY = document.body.offsetHeight - window.innerHeight
-          if (getScroll().y < 0 || getScroll().y > maxY) return;
+          if (getScroll().y < 0 || getScroll().y > maxY) return
 
           this.setState(propsMapper(getScroll(), this.scroll))
           this.scroll = getScroll()
