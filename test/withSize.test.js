@@ -5,7 +5,7 @@ import expect from 'expect'
 
 import withSize from '../src/withSize'
 
-test('append withSize after mounting', () => {
+test('append DOMSize after mounting', () => {
   const Container = withSize()('div')
   const wrapper = mount(<Container />)
 
@@ -13,29 +13,19 @@ test('append withSize after mounting', () => {
 })
 
 
-test('update offsetToRoot when the window is resized', () => {
-  const cwrpSpy = expect.createSpy()
+test('invoke the cancel function of the provided throttle when unmount', () => {
+  const cancelSpy = expect.createSpy()
 
-  class FatCat extends React.Component {
-    componentWillReceiveProps = cwrpSpy
-    render = () => <div style={{ width: this.props.width }} />
+  /* eslint no-param-reassign:["error", { "props": false }] */
+  const fakeThrottle = func => {
+    func.cancel = cancelSpy
+    return func
   }
 
-  const Container = withSize()(FatCat)
-
+  const Container = withSize(fakeThrottle)('div')
   const wrapper = mount(<Container />)
-
-  // invoke in cdm
-  expect(cwrpSpy.calls.length).toEqual(1)
-
-  wrapper.setProps({ width: 100 })
-  wrapper.setProps({ width: 200 })
-
-  expect(cwrpSpy.calls.length).toEqual(3)
 
   wrapper.unmount()
 
-  wrapper.setProps({ width: 300 })
-
-  expect(cwrpSpy.calls.length).toEqual(3)
+  expect(cancelSpy).toHaveBeenCalled()
 })
