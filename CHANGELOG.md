@@ -1,5 +1,6 @@
 ## [HEAD]
 
+- Update recompose@0.18
 - Remove all default parameters, including `throttle` and `mapOnMount`
 
 [HEAD]: https://github.com/wuct/react-dom-utils/compare/latest...HEAD
