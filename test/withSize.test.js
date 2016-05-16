@@ -6,7 +6,7 @@ import expect from 'expect'
 import withSize from '../src/withSize'
 
 test('append DOMSize after mounting', () => {
-  const Container = withSize()('div')
+  const Container = withSize(f => f)('div')
   const wrapper = mount(<Container />)
 
   expect(wrapper.find('div').props()).toIncludeKey('DOMSize')

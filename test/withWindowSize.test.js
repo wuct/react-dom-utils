@@ -7,7 +7,7 @@ import simulant from 'simulant'
 import withWindowSize, { pickedProps } from '../src/withWindowSize'
 
 test('append withWindowSize after mounting', () => {
-  const Container = withWindowSize()('div')
+  const Container = withWindowSize(f => f)('div')
   const wrapper = mount(<Container />)
 
   expect(wrapper.find('div').props().windowSize)
@@ -23,7 +23,7 @@ test('update windowSize when the window is resized', () => {
     render = () => null
   }
 
-  const Container = withWindowSize()(Foo)
+  const Container = withWindowSize(f => f)(Foo)
 
   const wrapper = mount(<Container />)
 

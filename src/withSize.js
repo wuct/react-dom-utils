@@ -4,7 +4,6 @@ import erdFactory from 'element-resize-detector'
 import createElement from 'recompose/createElement'
 import createHelper from 'recompose/createHelper'
 import pick from 'lodash/pick'
-import identity from 'lodash/identity'
 import isFunction from 'lodash/isFunction'
 
 const erd = erdFactory()
@@ -17,8 +16,7 @@ const pickedProps = [
   'scrollHeight',
 ]
 
-const withSize = (throttle = identity) =>
-  BaseComponent =>
+const withSize = throttle => BaseComponent =>
     class extends React.Component {
       state = {}
 

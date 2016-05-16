@@ -2,16 +2,13 @@ import React from 'react'
 import createElement from 'recompose/createElement'
 import createHelper from 'recompose/createHelper'
 import isFunction from 'lodash/isFunction'
-import lodashThrottle from 'lodash/throttle'
 
 const getScroll = () => ({
   x: window.pageXOffset,
   y: window.pageYOffset,
 })
 
-const mapPropsOnScroll =
-  (propsMapper, throttle = lodashThrottle) =>
-  BaseComponent =>
+const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent =>
     class extends React.Component {
       scroll = {};
 

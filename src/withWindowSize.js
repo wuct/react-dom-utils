@@ -1,6 +1,5 @@
 import createHelper from 'recompose/createHelper'
 import pick from 'lodash/pick'
-import identity from 'lodash/identity'
 import mapPropsOnEvent from './mapPropsOnEvent'
 
 export const pickedProps = [
@@ -10,7 +9,7 @@ export const pickedProps = [
   'outerHeight',
 ]
 
-const withWindowSize = (throttle = identity) =>
+const withWindowSize = throttle =>
   mapPropsOnEvent(
     () => window,
     'resize',

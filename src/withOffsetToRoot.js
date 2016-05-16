@@ -1,10 +1,9 @@
 import { findDOMNode } from 'react-dom'
 import createHelper from 'recompose/createHelper'
-import identity from 'lodash/identity'
 import mapPropsOnEvent from './mapPropsOnEvent'
 import getOffsetToRoot from './getOffsetToRoot'
 
-const withOffsetToRoot = (throttle = identity) =>
+const withOffsetToRoot = throttle =>
   mapPropsOnEvent(
     () => window,
     'resize',
