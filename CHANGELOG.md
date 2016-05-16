@@ -1,5 +1,7 @@
 ## [HEAD]
 
+- Remove all default parameters, including `throttle` and `mapOnMount`
+
 [HEAD]: https://github.com/wuct/react-dom-utils/compare/latest...HEAD
 
 ## [v1.4.0]

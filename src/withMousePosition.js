@@ -3,7 +3,6 @@ import { findDOMNode } from 'react-dom'
 import createHelper from 'recompose/createHelper'
 import createElement from 'recompose/createElement'
 import pick from 'lodash/pick'
-import identity from 'lodash/identity'
 import isFunction from 'lodash/isFunction'
 
 const pickedProps = [
@@ -17,8 +16,7 @@ const pickedProps = [
 
 export const defaultState = { mousePosition: undefined }
 
-const withMousePosition = (throttle = identity) =>
-BaseComponent =>
+const withMousePosition = throttle => BaseComponent =>
   class extends React.Component {
     state = defaultState
 

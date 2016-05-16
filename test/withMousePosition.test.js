@@ -9,7 +9,7 @@ import identity from 'lodash/identity'
 import withMousePosition, { defaultState } from '../src/withMousePosition'
 
 test('append mousePosition when mousemove', () => {
-  const Container = withMousePosition()('div')
+  const Container = withMousePosition(f => f)('div')
   const wrapper = mount(<Container />)
   const dom = findDOMNode(wrapper.instance())
 
@@ -20,7 +20,7 @@ test('append mousePosition when mousemove', () => {
 })
 
 test('reset mousePosition to default when mouseleave', () => {
-  const Container = withMousePosition()('div')
+  const Container = withMousePosition(f => f)('div')
   const wrapper = mount(<Container />)
   const dom = findDOMNode(wrapper.instance())
 

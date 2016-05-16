@@ -7,7 +7,7 @@ import simulant from 'simulant'
 import withOffsetToRoot from '../src/withOffsetToRoot'
 
 test('append offsetToRoot after mounting', () => {
-  const Container = withOffsetToRoot()('div')
+  const Container = withOffsetToRoot(f => f)('div')
   const wrapper = mount(<Container />)
 
   expect(wrapper.find('div').props())
@@ -23,7 +23,7 @@ test('update offsetToRoot when the window is resized', () => {
     render = () => null
   }
 
-  const Container = withOffsetToRoot()(Foo)
+  const Container = withOffsetToRoot(f => f)(Foo)
 
   mount(<Container />)
 

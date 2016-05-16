@@ -3,9 +3,7 @@ import createElement from 'recompose/createElement'
 import createHelper from 'recompose/createHelper'
 import isFunction from 'lodash/isFunction'
 
-const mapPropsOnEvent =
-  (getTarget, type, propsMapper, throttle, mapOnMount = false) =>
-  BaseComponent =>
+const mapPropsOnEvent = (getTarget, type, propsMapper, throttle, mapOnMount) => BaseComponent =>
     class extends React.Component {
       state = {}
 
