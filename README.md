@@ -7,9 +7,45 @@
 
 Inspired [recompose](https://github.com/acdlite/recompose/), [react-dom-utils](https://www.npmjs.com/package/react-dom-utils) let you work with DOMs in HOCs.
 
+We love functional stateless components, but when it comes to `findDOMNode`, we are forced to use class components. `react-dom-utils` let you lift your `findDOMNode` related jobs into hight-order components and write more small, reactive functional components.
+
+You can use `react-dom-utils` to
+
+* Get `window`'s width and height, and get updated when `window` resizes
+* Get `keyCode`s when `document` or another DOM element receives `keyDown` events
+* Get `pageX` and `pageY` from a `mousemove` event
+
+... and more. 
+
+
 ## Installation
 
 `npm install react-dom-utils --save`
+
+## Example
+
+```js
+import React from 'react'
+import withMousePosition from 'react-dom-utils/lib/withMousePosition.js'
+import throttle from 'raf-throttle'
+
+// withMousePosition appends a mousePosition object to the base component props
+const enhance = withMousePosition(throttle)
+
+const component = ({ mousePosition: { pageX, pageY } }) =>
+  <div style={{ top: pageX, left: pageY, position: 'absoluute' }}>
+    Follow your mouse
+  </div>
+
+export default enhance(component)
+```
+
+More examples is [here](https://github.com/wuct/react-dom-utils/tree/master/example)
+
+
+## Usage
+### `throttle`
+The throttling function is for throttling DOM events. It is recommended to use [raf-throttle](https://github.com/wuct/raf-throttle) which throttles DOM events by `requestAnimationFrame`. However, you can pass in an [identity](https://lodash.com/docs#identity) function if you do not want throttling.
 
 ## API
 
@@ -146,24 +182,6 @@ mapPropsOnScroll((scroll, previousScroll) => ({
   isScrollUp: previousScroll.y > scroll.y,
 })),
 ```
-
-## Usage
-### `throttle`
-Throttling functions are used for throttling events. All throttle functions are default to [lodash/identity](https://lodash.com/docs#identity). In other words, there is no throttling by default. It is recommended to use [raf-throttle](https://github.com/wuct/raf-throttle) instead.
-
-## Example
-
-```js
-import React from 'react'
-import throttle from 'raf-throttle'
-import withMousePosition from 'react-dom-utils/lib/withMousePosition.js'
-
-export default withMousePosition(throttle)(
-  ({ mousePosition }) => <div>{JSON.stringify(mousePosition)}</div>
-)
-```
-
-More examples is [here](https://github.com/wuct/react-dom-utils/tree/master/example)
 
 ## Contributing
 
