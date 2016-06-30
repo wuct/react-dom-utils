@@ -1,12 +1,10 @@
 import React from 'react'
 import { findDOMNode } from 'react-dom'
-import erdFactory from 'element-resize-detector'
 import createElement from 'recompose/createElement'
 import createHelper from 'recompose/createHelper'
 import pick from 'lodash/pick'
 import isFunction from 'lodash/isFunction'
 
-const erd = erdFactory()
 const pickedProps = [
   'offsetWidth',
   'offsetHeight',
@@ -30,7 +28,11 @@ const withSize = throttle => BaseComponent =>
        */
 
       componentDidMount = () => {
-        erd.listenTo(findDOMNode(this), this.onResize)
+        /* eslint-disable global-require */
+        this.erd = require('element-resize-detector')()
+        /* eslint-enable global-require */
+
+        this.erd.listenTo(findDOMNode(this), this.onResize)
 
         this.setSizeToState()
       }
@@ -40,7 +42,7 @@ const withSize = throttle => BaseComponent =>
           this.onResize.cancel()
         }
 
-        erd.removeListener(findDOMNode(this), this.onResize)
+        this.erd.removeListener(findDOMNode(this), this.onResize)
       }
 
       setSizeToState = () =>
