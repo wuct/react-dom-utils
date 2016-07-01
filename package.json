@@ -4,7 +4,7 @@
   "description": "DOM operation utilities for React",
   "main": "lib/index.js",
   "scripts": {
-    "install:example": "cd example && npm i",
+    "preinstall": "cd example && npm i",
     "lint": "eslint ./",
     "test": "npm run lint && ava",
     "test:coverage": "nyc npm run test",
