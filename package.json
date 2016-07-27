@@ -4,7 +4,7 @@
   "description": "DOM operation utilities for React",
   "main": "lib/index.js",
   "scripts": {
-    "preinstall": "cd example && npm i",
+    "watch": "webpack-dev-server --config ./example/webpack.config.js",
     "lint": "eslint ./",
     "test": "npm run lint && ava",
     "test:coverage": "nyc npm run test",
@@ -77,7 +77,11 @@
     "react-dom": "^15.0.0",
     "recompose": "^0.18.0",
     "simulant": "^0.2.0",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1",
+    "raf-throttle": "^1.0.2",
+    "babel-loader": "^6.2.4",
+    "html-webpack-plugin": "^2.14.0"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
