@@ -1,5 +1,5 @@
 import React from 'react'
-import createElement from 'recompose/createElement'
+import createElement from 'recompose/createEagerElement'
 import createHelper from 'recompose/createHelper'
 import isFunction from 'lodash/isFunction'
 

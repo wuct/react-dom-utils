@@ -1,6 +1,6 @@
 {
   "name": "react-dom-utils",
-  "version": "1.4.3",
+  "version": "2.0.0",
   "description": "DOM operation utilities for React",
   "main": "lib/index.js",
   "scripts": {
@@ -75,17 +75,16 @@
     "react": "^15.0.0",
     "react-addons-test-utils": "^15.0.0",
     "react-dom": "^15.0.0",
-    "recompose": "^0.18.0",
+    "recompose": "^0.20.2",
     "simulant": "^0.2.0",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "raf-throttle": "^1.0.2",
-    "babel-loader": "^6.2.4",
     "html-webpack-plugin": "^2.14.0"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
     "react-dom": "^0.14.0 || ^15.0.0",
-    "recompose": "0.x"
+    "recompose": "^0.20.2"
   }
 }
