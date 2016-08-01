@@ -1,6 +1,6 @@
 import React from 'react'
 import { findDOMNode } from 'react-dom'
-import createElement from 'recompose/createElement'
+import createElement from 'recompose/createEagerElement'
 import createHelper from 'recompose/createHelper'
 import pick from 'lodash/pick'
 import isFunction from 'lodash/isFunction'
