@@ -71,7 +71,7 @@
     "eslint-plugin-react": "^5.1.1",
     "expect": "^1.18.0",
     "jsdom": "^9.0.0",
-    "nyc": "^7.1.0",
+    "nyc": "^8.0.0",
     "react": "^15.0.0",
     "react-addons-test-utils": "^15.0.0",
     "react-dom": "^15.0.0",
