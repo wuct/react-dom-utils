@@ -67,7 +67,7 @@
     "eslint": "^3.3.1",
     "eslint-config-airbnb": "^11.0.0",
     "eslint-plugin-import": "^1.13.0",
-    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
     "expect": "^1.18.0",
     "jsdom": "^9.0.0",
     "nyc": "^8.0.0",
