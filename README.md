@@ -33,7 +33,7 @@ import throttle from 'raf-throttle'
 const enhance = withMousePosition(throttle)
 
 const component = ({ mousePosition: { pageX, pageY } }) =>
-  <div style={{ top: pageX, left: pageY, position: 'absoluute' }}>
+  <div style={{ top: pageX, left: pageY, position: 'absolute' }}>
     Follow your mouse
   </div>
 
