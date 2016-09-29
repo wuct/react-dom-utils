@@ -1,6 +1,6 @@
 import React from 'react'
 import throttle from 'raf-throttle'
-import withSize from '../src/withSize.js'
+import withSize from '../src/withSize'
 
 const style = {
   width: '100%',

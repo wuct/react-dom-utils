@@ -1,6 +1,6 @@
 import React from 'react'
 import throttle from 'raf-throttle'
-import withMousePosition from '../src/withMousePosition.js'
+import withMousePosition from '../src/withMousePosition'
 
 const style = {
   width: 400,

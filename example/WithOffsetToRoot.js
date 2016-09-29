@@ -1,6 +1,6 @@
 import React from 'react'
 import throttle from 'raf-throttle'
-import withOffsetToRoot from '../src/withOffsetToRoot.js'
+import withOffsetToRoot from '../src/withOffsetToRoot'
 
 const style = {
   width: 200,
