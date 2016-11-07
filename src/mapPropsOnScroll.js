@@ -33,7 +33,7 @@ const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent =>
 
           this.setState(propsMapper(getScroll(), this.scroll))
           this.scroll = getScroll()
-        }
+        },
       )
 
       render = () =>

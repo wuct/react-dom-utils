@@ -27,7 +27,7 @@ const mapPropsOnEvent = (getTarget, type, propsMapper, throttle, mapOnMount) => 
       }
 
       mapProps = throttle(
-        e => this.setState(propsMapper(e, this))
+        e => this.setState(propsMapper(e, this)),
       )
 
       render = () =>

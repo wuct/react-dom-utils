@@ -15,7 +15,7 @@ const withWindowSize = throttle =>
     'resize',
     () => ({ windowSize: pick(window, pickedProps) }),
     throttle,
-    true
+    true,
   )
 
 export default createHelper(withWindowSize, 'withWindowSize')
