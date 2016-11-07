@@ -11,7 +11,7 @@ test("map props on window's scroll event", () => {
 
   const Container = mapPropsOnScroll(
     mapSpy,
-    f => f
+    f => f,
   )('div')
 
   const wrapper = mount(<Container />)

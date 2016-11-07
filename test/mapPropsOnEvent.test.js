@@ -15,7 +15,7 @@ test("map props on window's events", () => {
     'resize',
     mapSpy,
     f => f,
-    false
+    false,
   )('div')
 
   const wrapper = mount(<Container />)
@@ -43,7 +43,7 @@ test("map props on dom's events", () => {
     'click',
     mapSpy,
     f => f,
-    false
+    false,
   )('div')
 
   const wrapper = mount(<Container />)

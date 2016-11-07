@@ -12,5 +12,5 @@ render(
     <WithWindowSize />
     <WithOffsetToRoot />
   </div>,
-  document.querySelector('#mountNode')
+  document.querySelector('#mountNode'),
 )

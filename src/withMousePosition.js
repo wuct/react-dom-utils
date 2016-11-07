@@ -36,7 +36,7 @@ const withMousePosition = throttle => BaseComponent =>
     }
 
     onMouseMove = throttle(
-      e => this.setState({ mousePosition: pick(e, pickedProps) })
+      e => this.setState({ mousePosition: pick(e, pickedProps) }),
     )
 
     onMouseLeave = () =>

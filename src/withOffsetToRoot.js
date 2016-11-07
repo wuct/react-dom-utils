@@ -9,7 +9,7 @@ const withOffsetToRoot = throttle =>
     'resize',
     (e, self) => ({ offsetToRoot: getOffsetToRoot(findDOMNode(self)) }),
     throttle,
-    true
+    true,
   )
 
 export default createHelper(withOffsetToRoot, 'withOffsetToRoot')
