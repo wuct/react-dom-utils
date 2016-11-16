@@ -68,7 +68,7 @@
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.2.2",
+    "eslint-plugin-react": "^6.7.0",
     "expect": "^1.18.0",
     "html-webpack-plugin": "^2.14.0",
     "jsdom": "^9.0.0",
