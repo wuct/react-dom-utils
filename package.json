@@ -71,7 +71,7 @@
     "eslint-plugin-react": "^6.7.0",
     "expect": "^1.18.0",
     "html-webpack-plugin": "^2.14.0",
-    "jsdom": "^9.0.0",
+    "jsdom": "^9.8.2",
     "nyc": "^8.0.0",
     "raf-throttle": "^1.0.2",
     "react": "^15.0.0",
