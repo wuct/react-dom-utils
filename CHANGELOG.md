@@ -1,3 +1,9 @@
+## [v2.0.1]
+
+- Add recompose@0.21 to peerDependencies
+- Add yarn.lock
+- Fix a typo in README
+
 ## [v2.0.0]
 
 - Update recompose to 0.20
