@@ -80,7 +80,7 @@
     "recompose": "^0.21.0",
     "simulant": "^0.2.0",
     "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^2.3.0"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
