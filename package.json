@@ -79,7 +79,7 @@
     "react-dom": "^15.0.0",
     "recompose": "^0.21.0",
     "simulant": "^0.2.0",
-    "webpack": "^2.3.0",
+    "webpack": "^3.0.0",
     "webpack-dev-server": "^2.3.0"
   },
   "peerDependencies": {
