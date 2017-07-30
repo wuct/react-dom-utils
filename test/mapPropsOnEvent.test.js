@@ -24,7 +24,7 @@ test("map props on window's events", () => {
   expect(mapSpy.calls.length).toEqual(1)
 
   expect(wrapper.find('div').props())
-  .toEqual({ foo: 'bar' })
+    .toEqual({ foo: 'bar' })
 
   simulant.fire(window, 'resize')
   expect(mapSpy.calls.length).toEqual(2)
@@ -53,7 +53,7 @@ test("map props on dom's events", () => {
   expect(mapSpy.calls.length).toEqual(1)
 
   expect(wrapper.find('div').props())
-  .toEqual({ foo: 'bar' })
+    .toEqual({ foo: 'bar' })
 
   simulant.fire(dom, 'click')
   expect(mapSpy.calls.length).toEqual(2)

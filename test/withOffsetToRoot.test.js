@@ -11,7 +11,7 @@ test('append offsetToRoot after mounting', () => {
   const wrapper = mount(<Container />)
 
   expect(wrapper.find('div').props())
-  .toInclude({ offsetToRoot: { offsetTop: 0, offsetLeft: 0 }})
+    .toInclude({ offsetToRoot: { offsetTop: 0, offsetLeft: 0 }})
 })
 
 

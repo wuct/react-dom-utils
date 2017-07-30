@@ -15,8 +15,8 @@ const pickedProps = [
 ]
 
 const withSize = throttle => BaseComponent =>
-    class extends React.Component {
-      state = {}
+  class extends React.Component {
+    state = {}
 
       /*
        * The erd will append an object element to the DOM.
@@ -27,34 +27,34 @@ const withSize = throttle => BaseComponent =>
        * ex: () => <div><span>foo</span></div>.
        */
 
-      componentDidMount = () => {
+    componentDidMount = () => {
         /* eslint-disable global-require */
-        this.erd = require('element-resize-detector')()
+      this.erd = require('element-resize-detector')()
         /* eslint-enable global-require */
 
-        this.erd.listenTo(findDOMNode(this), this.onResize)
+      this.erd.listenTo(findDOMNode(this), this.onResize)
 
-        this.setSizeToState()
+      this.setSizeToState()
+    }
+
+    componentWillUnmount = () => {
+      if (isFunction(this.onResize.cancel)) {
+        this.onResize.cancel()
       }
 
-      componentWillUnmount = () => {
-        if (isFunction(this.onResize.cancel)) {
-          this.onResize.cancel()
-        }
+      this.erd.removeListener(findDOMNode(this), this.onResize)
+    }
 
-        this.erd.removeListener(findDOMNode(this), this.onResize)
-      }
-
-      setSizeToState = () =>
+    setSizeToState = () =>
         this.setState({ DOMSize: pick(findDOMNode(this), pickedProps) })
 
-      onResize = throttle(this.setSizeToState)
+    onResize = throttle(this.setSizeToState)
 
-      render = () =>
+    render = () =>
         createElement(BaseComponent, {
           ...this.props,
           ...this.state,
         })
-    }
+  }
 
 export default createHelper(withSize, 'withSize')

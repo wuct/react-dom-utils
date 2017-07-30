@@ -20,7 +20,7 @@ test("map props on window's scroll event", () => {
   expect(mapSpy.calls.length).toEqual(1)
 
   expect(wrapper.find('div').props())
-  .toEqual({ foo: 'bar' })
+    .toEqual({ foo: 'bar' })
 
   simulant.fire(window, 'scroll')
   expect(mapSpy.calls.length).toEqual(2)

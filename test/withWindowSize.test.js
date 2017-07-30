@@ -11,7 +11,7 @@ test('append withWindowSize after mounting', () => {
   const wrapper = mount(<Container />)
 
   expect(wrapper.find('div').props().windowSize)
-  .toIncludeKeys(pickedProps)
+    .toIncludeKeys(pickedProps)
 })
 
 

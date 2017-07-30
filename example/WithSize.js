@@ -9,10 +9,10 @@ const style = {
 }
 
 const component = ({ DOMSize }) =>
-  <div style={style}>
+  (<div style={style}>
     <span>
       {JSON.stringify(DOMSize)}
     </span>
-  </div>
+  </div>)
 
 export default withSize(throttle)(component)
