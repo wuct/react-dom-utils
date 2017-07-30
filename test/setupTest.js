@@ -1,8 +1,9 @@
-global.document = require('jsdom').jsdom('<body></body>')
+const jsdom = require('jsdom')
 
-global.window = document.defaultView
-global.navigator = window.navigator
+const { JSDOM } = jsdom
 
-// remove after this pr merged
-// https://github.com/wnr/element-resize-detector/pull/46
-global.getComputedStyle = document.defaultView.getComputedStyle
+const dom = new JSDOM('<!DOCTYPE html><body></body>')
+
+global.window = dom.window
+global.document = dom.window.document
+global.navigator = dom.window.navigator
