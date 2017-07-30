@@ -32,9 +32,9 @@ const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent =>
           if (
             document.body.offsetHeight !== 0 && // offsetHeight is always zero in jsdom
             (getScroll().y < 0 || getScroll().y > maxY)
-          ){
+          ) {
             return
-          } 
+          }
 
           this.setState(() => propsMapper(getScroll(), this.scroll))
           this.scroll = getScroll()
