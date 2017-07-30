@@ -10,22 +10,22 @@ const getScroll = () => ({
 
 const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent =>
   class extends React.Component {
-      scroll = {};
+    scroll = {};
 
-      componentDidMount = () => {
-        this.scroll = getScroll()
-        window.addEventListener('scroll', this.mapProps)
+    componentDidMount = () => {
+      this.scroll = getScroll()
+      window.addEventListener('scroll', this.mapProps)
+    }
+
+    componentWillUnmount = () => {
+      if (isFunction(this.mapProps.cancel)) {
+        this.mapProps.cancel()
       }
 
-      componentWillUnmount = () => {
-        if (isFunction(this.mapProps.cancel)) {
-          this.mapProps.cancel()
-        }
+      window.removeEventListener('scroll', this.mapProps)
+    }
 
-        window.removeEventListener('scroll', this.mapProps)
-      }
-
-      mapProps = throttle(
+    mapProps = throttle(
         () => {
           // Remind: fix for safari over scrolling problem
           const maxY = document.body.offsetHeight - window.innerHeight
@@ -36,7 +36,7 @@ const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent =>
         },
       )
 
-      render = () =>
+    render = () =>
         createElement(BaseComponent, {
           ...this.props,
           ...this.state,
