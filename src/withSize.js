@@ -15,7 +15,7 @@ const pickedProps = [
 ]
 
 const withSize = throttle => BaseComponent =>
-    class extends React.Component {
+  class extends React.Component {
       state = {}
 
       /*
@@ -55,6 +55,6 @@ const withSize = throttle => BaseComponent =>
           ...this.props,
           ...this.state,
         })
-    }
+  }
 
 export default createHelper(withSize, 'withSize')

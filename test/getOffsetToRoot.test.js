@@ -39,9 +39,9 @@ test('one level DOM tree', () => {
 
 test('two levels DOM tree', () => {
   const Foo = () =>
-    <div style={{ marginTop: 1, marginLeft: 2 }}>
+    (<div style={{ marginTop: 1, marginLeft: 2 }}>
       <div style={{ marginTop: 3, marginLeft: 4 }} className="bar" />
-    </div>
+    </div>)
 
   const wrapper = mount(<Foo />)
   const dom = findDOMNode(wrapper.find('div').get(1))

@@ -9,7 +9,7 @@ const getScroll = () => ({
 })
 
 const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent =>
-    class extends React.Component {
+  class extends React.Component {
       scroll = {};
 
       componentDidMount = () => {
@@ -41,6 +41,6 @@ const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent =>
           ...this.props,
           ...this.state,
         })
-    }
+  }
 
 export default createHelper(mapPropsOnScroll, 'mapPropsOnScroll')

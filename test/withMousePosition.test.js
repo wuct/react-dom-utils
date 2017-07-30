@@ -16,7 +16,7 @@ test('append mousePosition when mousemove', () => {
   simulant.fire(dom, 'mousemove', { screenX: 1 })
 
   expect(wrapper.find('div').props())
-  .toInclude({ mousePosition: { screenX: 1 }})
+    .toInclude({ mousePosition: { screenX: 1 }})
 })
 
 test('reset mousePosition to default when mouseleave', () => {
