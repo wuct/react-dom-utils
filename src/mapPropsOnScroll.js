@@ -29,9 +29,14 @@ const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent =>
         () => {
           // Remind: fix for safari over scrolling problem
           const maxY = document.body.offsetHeight - window.innerHeight
-          if (getScroll().y < 0 || getScroll().y > maxY) return
+          if (
+            document.body.offsetHeight !== 0 && // offsetHeight is always zero in jsdom
+            (getScroll().y < 0 || getScroll().y > maxY)
+          ){
+            return
+          } 
 
-          this.setState(propsMapper(getScroll(), this.scroll))
+          this.setState(() => propsMapper(getScroll(), this.scroll))
           this.scroll = getScroll()
         },
       )
