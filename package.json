@@ -14,10 +14,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["prettier --write", "git add"]
   },
   "repository": {
     "type": "git",
@@ -39,21 +36,12 @@
   },
   "homepage": "https://github.com/wuct/react-dom-utils#readme",
   "babel": {
-    "presets": [
-      "es2015",
-      "stage-0",
-      "react"
-    ]
+    "presets": ["es2015", "stage-0", "react"]
   },
   "ava": {
-    "files": [
-      "./test/*.test.js"
-    ],
+    "files": ["./test/*.test.js"],
     "babel": "inherit",
-    "require": [
-      "babel-register",
-      "./test/setupTest.js"
-    ]
+    "require": ["babel-register", "./test/setupTest.js"]
   },
   "dependencies": {
     "element-resize-detector": "^1.1.0",
