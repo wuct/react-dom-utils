@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "webpack-dev-server --config ./example/webpack.config.js",
     "lint": "eslint ./",
-    "test": "npm run lint && ava",
+    "test": "ava",
     "test:coverage": "nyc npm run test",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "build": "NODE_ENV=production babel src --out-dir lib",
