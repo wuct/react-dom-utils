@@ -1,32 +1,28 @@
-import React from 'react'
-import test from 'ava'
-import { mount } from 'enzyme'
-import expect from 'expect'
-import simulant from 'simulant'
+import React from "react";
+import test from "ava";
+import { mount } from "enzyme";
+import expect from "expect";
+import simulant from "simulant";
 
-import mapPropsOnScroll from '../src/mapPropsOnScroll'
+import mapPropsOnScroll from "../src/mapPropsOnScroll";
 
 test("map props on window's scroll event", () => {
-  const mapSpy = expect.createSpy().andReturn({ foo: 'bar' })
+  const mapSpy = expect.createSpy().andReturn({ foo: "bar" });
 
-  const Container = mapPropsOnScroll(
-    mapSpy,
-    f => f,
-  )('div')
+  const Container = mapPropsOnScroll(mapSpy, f => f)("div");
 
-  const wrapper = mount(<Container />)
+  const wrapper = mount(<Container />);
 
-  simulant.fire(window, 'scroll')
-  expect(mapSpy.calls.length).toEqual(1)
+  simulant.fire(window, "scroll");
+  expect(mapSpy.calls.length).toEqual(1);
 
-  expect(wrapper.find('div').props())
-    .toEqual({ foo: 'bar' })
+  expect(wrapper.find("div").props()).toEqual({ foo: "bar" });
 
-  simulant.fire(window, 'scroll')
-  expect(mapSpy.calls.length).toEqual(2)
+  simulant.fire(window, "scroll");
+  expect(mapSpy.calls.length).toEqual(2);
 
-  wrapper.unmount()
+  wrapper.unmount();
 
-  simulant.fire(window, 'scroll')
-  expect(mapSpy.calls.length).toEqual(2)
-})
+  simulant.fire(window, "scroll");
+  expect(mapSpy.calls.length).toEqual(2);
+});
