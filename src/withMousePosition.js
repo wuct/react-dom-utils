@@ -1,7 +1,7 @@
 import React from "react";
 import { findDOMNode } from "react-dom";
-import createHelper from "recompose/createHelper";
-import createElement from "recompose/createEagerElement";
+import wrapDisplayName from "recompose/wrapDisplayName";
+import setDisplayName from "recompose/setDisplayName";
 import pick from "lodash/pick";
 import isFunction from "lodash/isFunction";
 
@@ -16,8 +16,8 @@ const pickedProps = [
 
 export const defaultState = { mousePosition: undefined };
 
-const withMousePosition = throttle => BaseComponent =>
-  class extends React.Component {
+const withMousePosition = throttle => BaseComponent => {
+  class WithMousePosition extends React.Component {
     state = defaultState;
 
     componentDidMount = () => {
@@ -42,10 +42,19 @@ const withMousePosition = throttle => BaseComponent =>
     onMouseLeave = () => this.setState(defaultState);
 
     render = () =>
-      createElement(BaseComponent, {
+      React.createElement(BaseComponent, {
         ...this.props,
         ...this.state
       });
-  };
+  }
 
-export default createHelper(withMousePosition, "withMousePosition");
+  if (process.env.NODE_ENV !== "production") {
+    return setDisplayName(wrapDisplayName(BaseComponent, "withMousePosition"))(
+      WithMousePosition
+    );
+  }
+
+  return WithMousePosition;
+};
+
+export default withMousePosition;

@@ -1,3 +1,7 @@
+## HEAD
+
+- Update recompose to 0.26.0
+
 ## [v2.0.1]
 
 - Add recompose@0.21 to peerDependencies
