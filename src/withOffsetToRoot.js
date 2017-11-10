@@ -1,15 +1,25 @@
 import { findDOMNode } from "react-dom";
-import createHelper from "recompose/createHelper";
+import wrapDisplayName from "recompose/wrapDisplayName";
+import setDisplayName from "recompose/setDisplayName";
 import mapPropsOnEvent from "./mapPropsOnEvent";
 import getOffsetToRoot from "./getOffsetToRoot";
 
-const withOffsetToRoot = throttle =>
-  mapPropsOnEvent(
+const withOffsetToRoot = throttle => BaseComponent => {
+  const WithOffsetToRoot = mapPropsOnEvent(
     () => window,
     "resize",
     (e, self) => ({ offsetToRoot: getOffsetToRoot(findDOMNode(self)) }),
     throttle,
     true
-  );
+  )(BaseComponent);
 
-export default createHelper(withOffsetToRoot, "withOffsetToRoot");
+  if (process.env.NODE_ENV !== "production") {
+    return setDisplayName(wrapDisplayName(BaseComponent, "withMousePosition"))(
+      WithOffsetToRoot
+    );
+  }
+
+  return WithOffsetToRoot;
+};
+
+export default withOffsetToRoot;

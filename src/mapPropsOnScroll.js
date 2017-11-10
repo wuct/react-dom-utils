@@ -1,6 +1,6 @@
 import React from "react";
-import createElement from "recompose/createEagerElement";
-import createHelper from "recompose/createHelper";
+import wrapDisplayName from "recompose/wrapDisplayName";
+import setDisplayName from "recompose/setDisplayName";
 import isFunction from "lodash/isFunction";
 
 const getScroll = () => ({
@@ -8,8 +8,8 @@ const getScroll = () => ({
   y: window.pageYOffset
 });
 
-const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent =>
-  class extends React.Component {
+const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent => {
+  class MapPropsOnScroll extends React.Component {
     scroll = {};
 
     componentDidMount = () => {
@@ -40,10 +40,19 @@ const mapPropsOnScroll = (propsMapper, throttle) => BaseComponent =>
     });
 
     render = () =>
-      createElement(BaseComponent, {
+      React.createElement(BaseComponent, {
         ...this.props,
         ...this.state
       });
-  };
+  }
 
-export default createHelper(mapPropsOnScroll, "mapPropsOnScroll");
+  if (process.env.NODE_ENV !== "production") {
+    return setDisplayName(wrapDisplayName(BaseComponent, "mapPropsOnScroll"))(
+      MapPropsOnScroll
+    );
+  }
+
+  return MapPropsOnScroll;
+};
+
+export default mapPropsOnScroll;

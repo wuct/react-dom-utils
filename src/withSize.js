@@ -1,7 +1,7 @@
 import React from "react";
 import { findDOMNode } from "react-dom";
-import createElement from "recompose/createEagerElement";
-import createHelper from "recompose/createHelper";
+import wrapDisplayName from "recompose/wrapDisplayName";
+import setDisplayName from "recompose/setDisplayName";
 import pick from "lodash/pick";
 import isFunction from "lodash/isFunction";
 
@@ -14,8 +14,8 @@ const pickedProps = [
   "scrollHeight"
 ];
 
-const withSize = throttle => BaseComponent =>
-  class extends React.Component {
+const withSize = throttle => BaseComponent => {
+  class WithSize extends React.Component {
     state = {};
 
     /*
@@ -51,10 +51,17 @@ const withSize = throttle => BaseComponent =>
     onResize = throttle(this.setSizeToState);
 
     render = () =>
-      createElement(BaseComponent, {
+      React.createElement(BaseComponent, {
         ...this.props,
         ...this.state
       });
-  };
+  }
 
-export default createHelper(withSize, "withSize");
+  if (process.env.NODE_ENV !== "production") {
+    return setDisplayName(wrapDisplayName(BaseComponent, "withSize"))(WithSize);
+  }
+
+  return WithSize;
+};
+
+export default withSize;

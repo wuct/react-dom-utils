@@ -1,6 +1,6 @@
 import React from "react";
-import createElement from "recompose/createEagerElement";
-import createHelper from "recompose/createHelper";
+import wrapDisplayName from "recompose/wrapDisplayName";
+import setDisplayName from "recompose/setDisplayName";
 import isFunction from "lodash/isFunction";
 
 const mapPropsOnEvent = (
@@ -9,8 +9,8 @@ const mapPropsOnEvent = (
   propsMapper,
   throttle,
   mapOnMount
-) => BaseComponent =>
-  class extends React.Component {
+) => BaseComponent => {
+  class MapPropsOnEvent extends React.Component {
     state = {};
 
     componentDidMount = () => {
@@ -35,10 +35,19 @@ const mapPropsOnEvent = (
     mapProps = throttle(e => this.setState(propsMapper(e, this)));
 
     render = () =>
-      createElement(BaseComponent, {
+      React.createElement(BaseComponent, {
         ...this.props,
         ...this.state
       });
-  };
+  }
 
-export default createHelper(mapPropsOnEvent, "mapPropsOnEvent");
+  if (process.env.NODE_ENV !== "production") {
+    return setDisplayName(wrapDisplayName(BaseComponent, "mapPropsOnEvent"))(
+      MapPropsOnEvent
+    );
+  }
+
+  return MapPropsOnEvent;
+};
+
+export default mapPropsOnEvent;
