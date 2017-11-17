@@ -6,11 +6,17 @@ import simulant from "simulant";
 
 import withWindowSize, { pickedProps } from "../src/withWindowSize";
 
+class Div extends React.Component {
+  render() {
+    return <div />;
+  }
+}
+
 test("append withWindowSize after mounting", () => {
-  const Container = withWindowSize(f => f)("div");
+  const Container = withWindowSize(f => f)(Div);
   const wrapper = mount(<Container />);
 
-  expect(wrapper.find("div").props().windowSize).toIncludeKeys(pickedProps);
+  expect(wrapper.find(Div).props().windowSize).toIncludeKeys(pickedProps);
 });
 
 test("update windowSize when the window is resized", () => {

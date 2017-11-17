@@ -6,11 +6,17 @@ import simulant from "simulant";
 
 import withOffsetToRoot from "../src/withOffsetToRoot";
 
+class Div extends React.Component {
+  render() {
+    return <div />;
+  }
+}
+
 test("append offsetToRoot after mounting", () => {
-  const Container = withOffsetToRoot(f => f)("div");
+  const Container = withOffsetToRoot(f => f)(Div);
   const wrapper = mount(<Container />);
 
-  expect(wrapper.find("div").props()).toInclude({
+  expect(wrapper.find(Div).props()).toInclude({
     offsetToRoot: { offsetTop: 0, offsetLeft: 0 }
   });
 });

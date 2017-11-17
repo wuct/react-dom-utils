@@ -1,5 +1,4 @@
 import React from "react";
-import { findDOMNode } from "react-dom";
 import test from "ava";
 import { mount } from "enzyme";
 import expect from "expect";
@@ -8,34 +7,40 @@ import identity from "lodash/identity";
 
 import withMousePosition, { defaultState } from "../src/withMousePosition";
 
+class Div extends React.Component {
+  render() {
+    return <div />;
+  }
+}
+
 test("append mousePosition when mousemove", () => {
-  const Container = withMousePosition(f => f)("div");
+  const Container = withMousePosition(f => f)(Div);
   const wrapper = mount(<Container />);
-  const dom = findDOMNode(wrapper.instance());
+  const dom = wrapper.getDOMNode();
 
   simulant.fire(dom, "mousemove", { screenX: 1 });
 
-  expect(wrapper.find("div").props()).toInclude({
+  expect(wrapper.find(Div).instance().props).toInclude({
     mousePosition: { screenX: 1 }
   });
 });
 
 test("reset mousePosition to default when mouseleave", () => {
-  const Container = withMousePosition(f => f)("div");
+  const Container = withMousePosition(f => f)(Div);
   const wrapper = mount(<Container />);
-  const dom = findDOMNode(wrapper.instance());
+  const dom = wrapper.getDOMNode();
 
   simulant.fire(dom, "mousemove");
   simulant.fire(dom, "mouseleave");
 
-  expect(wrapper.find("div").props()).toEqual(defaultState);
+  expect(wrapper.find(Div).instance().props).toEqual(defaultState);
 });
 
 test("invoke the provided throttle function only once", () => {
   const throttleSpy = expect.createSpy().andCall(identity);
-  const Container = withMousePosition(throttleSpy)("div");
+  const Container = withMousePosition(throttleSpy)(Div);
   const wrapper = mount(<Container />);
-  const dom = findDOMNode(wrapper.instance());
+  const dom = wrapper.getDOMNode();
 
   simulant.fire(dom, "mousemove");
   simulant.fire(dom, "mouseleave");
@@ -53,7 +58,7 @@ test("invoke the cancel function of the provided throttle when unmount", () => {
     return func;
   };
 
-  const Container = withMousePosition(fakeThrottle)("div");
+  const Container = withMousePosition(fakeThrottle)(Div);
   const wrapper = mount(<Container />);
 
   wrapper.unmount();

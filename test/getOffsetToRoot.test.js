@@ -1,5 +1,4 @@
 import React from "react";
-import { findDOMNode } from "react-dom";
 import test from "ava";
 import { mount } from "enzyme";
 import expect from "expect";
@@ -38,22 +37,31 @@ Object.defineProperties(window.HTMLElement.prototype, {
   }
 });
 
+class Div extends React.Component {
+  render() {
+    return (
+      <div style={this.props.style}>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
 test("one level DOM tree", () => {
-  const Foo = () => <div style={{ marginTop: 10, marginLeft: 10 }} />;
-  const wrapper = mount(<Foo />);
-  const dom = findDOMNode(wrapper.instance());
+  const wrapper = mount(<Div style={{ marginTop: 10, marginLeft: 10 }} />);
+  const dom = wrapper.getDOMNode();
 
   expect(getOffsetToRoot(dom)).toEqual({ offsetTop: 10, offsetLeft: 10 });
 });
 
 test("two levels DOM tree", () => {
-  const Foo = () =>
-    <div style={{ marginTop: 1, marginLeft: 2 }}>
-      <div style={{ marginTop: 3, marginLeft: 4 }} className="bar" />
-    </div>;
+  const wrapper = mount(
+    <Div style={{ marginTop: 1, marginLeft: 2 }}>
+      <Div style={{ marginTop: 3, marginLeft: 4 }} />
+    </Div>
+  );
 
-  const wrapper = mount(<Foo />);
-  const dom = findDOMNode(wrapper.find("div").get(1));
+  const dom = wrapper.find(Div).last().getDOMNode();
 
   expect(getOffsetToRoot(dom)).toEqual({ offsetTop: 4, offsetLeft: 6 });
 });
