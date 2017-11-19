@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "webpack-dev-server --config ./example/webpack.config.js",
     "lint": "eslint ./",
-    "test": "NODE_ENV=test npm run lint && NODE_ENV=test ava",
+    "test": "NODE_ENV=test npm run lint && NODE_ENV=test jest",
     "test:coverage": "nyc npm run test",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "build": "NODE_ENV=production babel src --out-dir lib",
@@ -43,14 +43,11 @@
       "react-app"
     ]
   },
-  "ava": {
-    "files": [
-      "./test/*.test.js"
-    ],
-    "babel": "inherit",
-    "require": [
+  "jest": {
+    "setupFiles": [
       "babel-register",
-      "./test/setupTest.js"
+      "./test/setupJsdom.js",
+      "./test/setupEnzyme.js"
     ]
   },
   "dependencies": {
@@ -58,7 +55,6 @@
     "lodash": "^4.6.1"
   },
   "devDependencies": {
-    "ava": "^0.18.0",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-eslint": "8.0.2",
@@ -77,6 +73,7 @@
     "expect": "^1.18.0",
     "html-webpack-plugin": "^2.14.0",
     "husky": "^0.14.3",
+    "jest": "^21.2.1",
     "jsdom": "^11.0.0",
     "lint-staged": "^5.0.0",
     "nyc": "^11.0.3",

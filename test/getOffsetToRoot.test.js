@@ -1,5 +1,4 @@
 import React from "react";
-import test from "ava";
 import { mount } from "enzyme";
 import expect from "expect";
 
@@ -39,11 +38,7 @@ Object.defineProperties(window.HTMLElement.prototype, {
 
 class Div extends React.Component {
   render() {
-    return (
-      <div style={this.props.style}>
-        {this.props.children}
-      </div>
-    );
+    return <div style={this.props.style}>{this.props.children}</div>;
   }
 }
 
@@ -61,7 +56,10 @@ test("two levels DOM tree", () => {
     </Div>
   );
 
-  const dom = wrapper.find(Div).last().getDOMNode();
+  const dom = wrapper
+    .find(Div)
+    .last()
+    .getDOMNode();
 
   expect(getOffsetToRoot(dom)).toEqual({ offsetTop: 4, offsetLeft: 6 });
 });
