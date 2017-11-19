@@ -7,6 +7,12 @@ import simulant from "simulant";
 
 import mapPropsOnEvent from "../src/mapPropsOnEvent";
 
+class Div extends React.Component {
+  render() {
+    return <div />;
+  }
+}
+
 test("map props on window's events", () => {
   const mapSpy = expect.createSpy().andReturn({ foo: "bar" });
 
@@ -16,14 +22,14 @@ test("map props on window's events", () => {
     mapSpy,
     f => f,
     false
-  )("div");
+  )(Div);
 
   const wrapper = mount(<Container />);
 
   simulant.fire(window, "resize");
   expect(mapSpy.calls.length).toEqual(1);
 
-  expect(wrapper.find("div").props()).toEqual({ foo: "bar" });
+  expect(wrapper.find(Div).instance().props).toEqual({ foo: "bar" });
 
   simulant.fire(window, "resize");
   expect(mapSpy.calls.length).toEqual(2);
@@ -43,15 +49,15 @@ test("map props on dom's events", () => {
     mapSpy,
     f => f,
     false
-  )("div");
+  )(Div);
 
   const wrapper = mount(<Container />);
-  const dom = findDOMNode(wrapper.instance());
+  const dom = wrapper.getDOMNode();
 
   simulant.fire(dom, "click");
   expect(mapSpy.calls.length).toEqual(1);
 
-  expect(wrapper.find("div").props()).toEqual({ foo: "bar" });
+  expect(wrapper.find(Div).instance().props).toEqual({ foo: "bar" });
 
   simulant.fire(dom, "click");
   expect(mapSpy.calls.length).toEqual(2);

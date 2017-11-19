@@ -1,4 +1,8 @@
+const { configure } = require("enzyme");
+const Adapter = require("enzyme-adapter-react-16");
 const jsdom = require("jsdom");
+
+configure({ adapter: new Adapter() });
 
 const { JSDOM } = jsdom;
 
