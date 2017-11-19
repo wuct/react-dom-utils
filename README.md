@@ -1,7 +1,7 @@
 # react-dom-utils
 
 [![npm](https://img.shields.io/npm/v/react-dom-utils.svg)](https://www.npmjs.com/package/react-dom-utils)
-[![Travis](https://img.shields.io/travis/wuct/react-dom-utils.svg)](https://travis-ci.org/wuct/react-dom-utils)
+[![Travis](https://img.shields.io/travis/wuct/react-dom-utils/master.svg)](https://travis-ci.org/wuct/react-dom-utils)
 [![Codecov](https://img.shields.io/codecov/c/github/wuct/react-dom-utils/master.svg)](https://codecov.io/github/wuct/react-dom-utils)
 [![Code Climate](https://img.shields.io/codeclimate/github/wuct/react-dom-utils.svg)](https://codeclimate.com/github/wuct/react-dom-utils)
 
