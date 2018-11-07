@@ -80,7 +80,7 @@
     "prettier": "^1.5.3",
     "raf-throttle": "^2.0.2",
     "react": "^16.6.1",
-    "react-dom": "^16.0.0",
+    "react-dom": "^16.6.1",
     "recompose": "^0.26.0",
     "simulant": "^0.2.0",
     "webpack": "^4.5.0",
