@@ -51,7 +51,7 @@
     ]
   },
   "dependencies": {
-    "element-resize-detector": "^1.1.0",
+    "element-resize-detector": "^1.2.0",
     "lodash": "^4.6.1"
   },
   "devDependencies": {
