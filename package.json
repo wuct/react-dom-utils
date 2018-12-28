@@ -69,7 +69,7 @@
     "eslint-plugin-flowtype": "^2.33.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.0.1",
+    "eslint-plugin-react": "7.11.1",
     "expect": "^1.18.0",
     "html-webpack-plugin": "^3.0.0",
     "husky": "^0.14.3",
