@@ -67,7 +67,7 @@
     "eslint": "^5.0.0",
     "eslint-config-react-app": "^2.0.0",
     "eslint-plugin-flowtype": "^2.33.0",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-import": "^2.15.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.0.1",
     "expect": "^1.18.0",
